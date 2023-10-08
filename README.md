@@ -9,9 +9,9 @@ Swift UIKit Food Promotion App with Meal API
 - User can see all food categories
 - By selecting the desired category, the user can only see the foods belonging to that category.
 
-### Includes
+### Using
 
 - Kingfisher
 - Alamofire
-- MVVM Design Pattern
 - REST API
+- Custom delegates and protocols
