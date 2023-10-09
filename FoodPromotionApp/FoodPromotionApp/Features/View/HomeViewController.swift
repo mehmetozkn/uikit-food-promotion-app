@@ -7,11 +7,16 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+protocol HomeOutput {
+    func changeLoading(isLoad: Bool)
+    func saveDatas(values: [CategoryModel])
+}
+
+final class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private let customTableView = CustomTableView()
+    private let customTableView = CategoryTableView()
     private let homeService = HomeService()
     
     override func viewDidLoad() {
@@ -23,7 +28,9 @@ class HomeViewController: UIViewController {
     func initDelegate ()  {
         tableView.delegate = customTableView
         tableView.dataSource = customTableView
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         customTableView.delegate = self
+        
     }
     
     func initService () {
@@ -39,7 +46,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: CustomTableViewOutput {
+extension HomeViewController: CategoryTableViewOutput {
     func onSelected(item: CategoryModel) {
         print(item.idCategory ?? "")
     }

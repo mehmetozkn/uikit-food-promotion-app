@@ -7,7 +7,7 @@
 
 import Alamofire
 
-protocol HomeProtocol {
+protocol IHomeService {
     func fetchAllCategories(onSuccess:@escaping ([CategoryModel]?)-> Void, onFail: @escaping (String?) -> Void)
 }
 
@@ -23,7 +23,7 @@ extension HomePath {
 }
 
 
-struct HomeService : HomeProtocol {
+struct HomeService : IHomeService {
     func fetchAllCategories(onSuccess: @escaping ([CategoryModel]?) -> Void, onFail: @escaping (String?) -> Void) {
         AF.request(HomePath.CATEGORIES.withBaseUrl(), method: .get).validate().responseDecodable(of: CategoryResponse.self) { (response) in
             guard let categoryResponse = response.value else {
