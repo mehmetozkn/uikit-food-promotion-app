@@ -15,7 +15,6 @@ protocol CategoryTableViewOutput : AnyObject {
     func onSelected(item: CategoryModel)
 }
 
-
 final class CategoryTableView : NSObject {
     
     private lazy var items: [CategoryModel] = []
@@ -33,7 +32,6 @@ final class CategoryTableView : NSObject {
         cell.descriptionLabel.text = items[indexPath.row].strCategoryDescription
         let url = URL(string: items[indexPath.row].strCategoryThumb ?? "")
         cell.customİmageView.kf.setImage(with: url)
-        
         return cell
         
     }
@@ -44,9 +42,8 @@ final class CategoryTableView : NSObject {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.onSelected(item: items[indexPath.row])
+        
     }
-    
-    
 }
 
 extension CategoryTableView: UITableViewDelegate, UITableViewDataSource {}

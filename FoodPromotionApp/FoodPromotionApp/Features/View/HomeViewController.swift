@@ -43,11 +43,17 @@ final class HomeViewController: UIViewController {
         }
 
     }
-
+    
+    
 }
+
+
 
 extension HomeViewController: CategoryTableViewOutput {
     func onSelected(item: CategoryModel) {
-        print(item.idCategory ?? "")
+        let detailViewController = DetailViewController()
+        detailViewController.receivedData = item.strCategory
+        detailViewController.imageUrl = item.strCategoryThumb
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
