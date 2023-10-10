@@ -13,7 +13,6 @@ struct CategoryModel: Codable {
 }
 
 
-
 struct CategoryResponse: Codable {
     let categories: [CategoryModel]?
     
