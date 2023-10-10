@@ -12,13 +12,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var receivedData: String?
-    var imageUrl: String?
-
+    var categoryModel : CategoryModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = receivedData
-        let url = URL(string: imageUrl ?? "istanbul")
+        nameLabel.text = categoryModel?.strCategory
+        let url = URL(string: categoryModel?.strCategoryThumb ?? "istanbul")
         categoryImageView.kf.setImage(with: url)
         
 
