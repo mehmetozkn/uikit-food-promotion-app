@@ -34,7 +34,6 @@ class DetailViewController: UIViewController {
         let url = URL(string: categoryModel?.strCategoryThumb ?? "placeholder")
         categoryImageView.kf.setImage(with: url)
         
-        print(detailViewModel.meals.count)
         
     }
 
@@ -61,9 +60,8 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell", for: indexPath) as! MealTableViewCell
         cell.mealNameLabel.text = results[indexPath.row].strMeal
-        cell.mealDescriptionLabel.text = "sadasdas"
         let url = URL(string: results[indexPath.row].strMealThumb ?? "")
-        cell.mealimageView.kf.setImage(with: url)
+        cell.mealImageView.kf.setImage(with: url)
         return cell
     }
 }

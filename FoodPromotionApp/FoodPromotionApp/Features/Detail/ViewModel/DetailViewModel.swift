@@ -12,7 +12,7 @@ import Foundation
 final class DetailViewModel {
 
     var detailOutput: DetailOutput?
-    
+
     func setDelegate(output: DetailOutput) {
         detailOutput = output
     }
@@ -24,10 +24,10 @@ final class DetailViewModel {
         detailService.fetchMealsByCategory(value: category, onSuccess: { [weak self] (meals) in
 
             if let meals = meals {
-               
-                    self?.meals = meals
+
+                self?.meals = meals
                 self?.detailOutput?.saveDatas(values: self?.meals ?? [])
-                
+
 
             } else {
                 print("No Data")

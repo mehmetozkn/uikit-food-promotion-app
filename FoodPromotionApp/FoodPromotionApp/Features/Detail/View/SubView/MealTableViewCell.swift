@@ -9,10 +9,9 @@ import UIKit
 
 class MealTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var mealDescriptionLabel: UILabel!
     @IBOutlet weak var mealNameLabel: UILabel!
     
-    @IBOutlet weak var mealimageView: UIImageView!
+    @IBOutlet weak var mealImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
