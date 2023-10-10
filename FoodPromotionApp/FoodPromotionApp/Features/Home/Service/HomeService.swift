@@ -11,21 +11,19 @@ protocol IHomeService {
     func fetchAllCategories(onSuccess:@escaping ([CategoryModel]?)-> Void, onFail: @escaping (String?) -> Void)
 }
 
-enum HomePath: String {
-    case CATEGORIES = "/categories.php"
-}
+enum HomeServiceEndPoint: String {
+    case BASE_URL = "https://www.themealdb.com/api/json/v1/1"
+    case PATH = "/categories.php"
 
-extension HomePath {
-
-    func withBaseUrl() -> String {
-        return "https://www.themealdb.com/api/json/v1/1\(self.rawValue)"
+    static func characterPath() -> String {
+        return "\(BASE_URL.rawValue)\(PATH.rawValue)"
     }
 }
 
 
 struct HomeService : IHomeService {
     func fetchAllCategories(onSuccess: @escaping ([CategoryModel]?) -> Void, onFail: @escaping (String?) -> Void) {
-        AF.request(HomePath.CATEGORIES.withBaseUrl(), method: .get).validate().responseDecodable(of: CategoryResponse.self) { (response) in
+        AF.request(HomeServiceEndPoint.characterPath(), method: .get).validate().responseDecodable(of: CategoryResponse.self) { (response) in
             guard let categoryResponse = response.value else {
                 onFail(response.debugDescription)
                 return
