@@ -22,19 +22,26 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "MealTableViewCell", bundle: nil), forCellReuseIdentifier: "MealTableViewCell")
+        initDelegate()
+        initPageCategoryInfo()
         
         detailViewModel.setDelegate(output: self)
         detailViewModel.fetchItems(category: categoryModel?.strCategory ?? "")
+      
+    }
+    
+    func initPageCategoryInfo() {
         
         nameLabel.text = categoryModel?.strCategory
         descriptionLabel.text = categoryModel?.strCategoryDescription
         let url = URL(string: categoryModel?.strCategoryThumb ?? "placeholder")
         categoryImageView.kf.setImage(with: url)
-        
-        
+    }
+    
+    func initDelegate() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "MealTableViewCell", bundle: nil), forCellReuseIdentifier: "MealTableViewCell")
     }
 
  }
