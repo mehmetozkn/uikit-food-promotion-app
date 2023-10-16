@@ -19,7 +19,7 @@ final class CategoryTableView : NSObject {
     
     private lazy var items: [CategoryModel] = []
     
-    /// Custom TableView Outpu Models
+    /// Custom TableView Output Models
     weak var delegate: CategoryTableViewOutput?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

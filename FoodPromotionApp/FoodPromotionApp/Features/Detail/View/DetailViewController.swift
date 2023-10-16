@@ -66,9 +66,16 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource  {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell", for: indexPath) as! MealTableViewCell
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 2
+        
         cell.mealNameLabel.text = results[indexPath.row].strMeal
         let url = URL(string: results[indexPath.row].strMealThumb ?? "")
         cell.mealImageView.kf.setImage(with: url)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UIScreen.screenHeight * 0.1
     }
 }
