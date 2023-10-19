@@ -24,7 +24,6 @@ final class DetailViewModel {
         detailService.fetchMealsByCategory(value: category, onSuccess: { [weak self] (meals) in
 
             if let meals = meals {
-
                 self?.meals = meals
                 self?.detailOutput?.saveDatas(values: self?.meals ?? [])
 
@@ -32,6 +31,7 @@ final class DetailViewModel {
             } else {
                 print("No Data")
             }
+            
         }) { (error) in
             if let error = error {
                 print(error)
